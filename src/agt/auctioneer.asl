@@ -9,8 +9,8 @@ winner(null).
 @g00[atomic] +!setOffer : .count(present[source(B)],N) & N > 0 <-
 	?price(P);
 	.broadcast(tell, auction(diamond_ring, P));
-	.print("Asking for a 'diamond ring' for ", P);
-	-+price(P*0.99);
+	.print("Who pay ", P, " for this 'diamond ring'?");
+	-+price(P*1.01);
 	!!setOffer.
 
 @g01 +!setOffer. //Failure plan
