@@ -1,0 +1,16 @@
+mas auction_agA {
+
+	agent marie_curie	: auctioneerA.asl
+ 
+    agent socrates      : participantA.asl
+    agent kant          : participantA.asl
+    agent atistoteles   : participantA.asl
+    agent platao        : participantA.asl
+    agent heraclito     : participantA.asl
+	agent hannah_arendt : participantA.asl
+ 
+     
+    asl-path: src/agt
+              src/agt/inc
+}
+
