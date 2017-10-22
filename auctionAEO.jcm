@@ -1,0 +1,28 @@
+mas auctionAEO {
+
+	agent marie_curie	: auctioneerAEO.asl
+	
+    agent socrates      : participantAEO.asl
+    agent kant          : participantAEO.asl
+    agent atistoteles   : participantAEO.asl
+    agent platao        : participantAEO.asl
+    agent heraclito     : participantAEO.asl
+	agent hannah_arendt : participantAEO.asl
+ 
+    organisation aorg : auction-os.xml {
+        group agrp : auctionGroup {
+            players: marie_curie	auctioneer
+                     socrates		participant
+                     kant			participant
+                     atistoteles	participant
+                     platao			participant
+                     heraclito		participant
+                     hannah_arendt	participant
+            debug
+        }
+    }
+     
+    asl-path: src/agt
+              src/agt/inc
+}
+

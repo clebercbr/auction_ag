@@ -1,4 +1,4 @@
-package auction_ag;
+package auction;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -3,7 +3,7 @@ product(diamond_ring).
 !start.
 
 +!start <- 
-	makeArtifact(a1, "auction_ag.AuctionArtifact", [], ArtId);
+	makeArtifact(a1, "auction.AuctionArtifact", [], ArtId);
     .print("Auction artifact created for ",product(diamond_ring));
     focus(ArtId);
     .broadcast(achieve,focus(a1));

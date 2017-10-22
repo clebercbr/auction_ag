@@ -1,4 +1,4 @@
-mas auction_agAE {
+mas auctionAE {
 
 	agent marie_curie	: auctioneerAE.asl
     agent socrates      : participantAE.asl
