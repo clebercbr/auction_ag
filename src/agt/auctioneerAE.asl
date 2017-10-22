@@ -1,29 +1,25 @@
-// Agent leiloeiro in project versao_ae
+product(diamond_ring).
 
-/* Initial beliefs and rules */
-inicial_price(math.random*4).
+!start.
 
-/* Initial goals */
-
-
-
-/* Plans */
-
-+!start(Id,P)
-   <- makeArtifact(Id, "versao_ae.AuctionArtifact", [], ArtId);
-      .print("Auction artifact created for ",P);
-      Id::focus(ArtId);  // place observable properties of this auction in a particular name space
-      Id::start(P);
-      .broadcast(achieve,focus(Id));  // ask all others to focus on this new artifact
-      .at("now + 5 seconds", {+!decide(Id)}).
-
-+!decide(Id)
-   <- Id::stop.
-
-+NS::winner(W) : W \== no_winner
-   <- ?NS::task(S);
-      ?NS::best_bid(V);
-      .print("O ganhador", S, " é ",W," com ", V, "reais").
++!start <- 
+	makeArtifact(a1, "auction_ag.AuctionArtifact", [], ArtId);
+    .print("Auction artifact created for ",product(diamond_ring));
+    focus(ArtId);
+    .broadcast(achieve,focus(a1));
+    .wait(500);
+    !setOffer.
+    
+@p10[atomic] +!setOffer <-    
+	lookupArtifact(a1,ArtId);
+	?participants(N);
+	if (N > 1) {
+		?minOffer(P);
+		setOffer(P+20);	
+		!!setOffer;
+	}.
+	
++!setOffer.
 
 { include("$jacamoJar/templates/common-cartago.asl") }
 { include("$jacamoJar/templates/common-moise.asl") }

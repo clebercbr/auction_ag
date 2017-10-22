@@ -1,7 +1,6 @@
 mas auction_agAE {
 
 	agent marie_curie	: auctioneerAE.asl
- 
     agent socrates      : participantAE.asl
     agent kant          : participantAE.asl
     agent atistoteles   : participantAE.asl
@@ -9,7 +8,6 @@ mas auction_agAE {
     agent heraclito     : participantAE.asl
 	agent hannah_arendt : participantAE.asl
  
-     
     asl-path: src/agt
               src/agt/inc
 }

@@ -1,51 +1,47 @@
 package auction_ag;
 
+import java.util.ArrayList;
+import java.util.List;
+
 //CArtAgO artifact code for project versao_ae
 
-import jason.asSyntax.Atom;
 import cartago.*;
 
 public class AuctionArtifact extends Artifact {
 
- String currentWinner = "no_winner";
+	private List<String> participants;
+	
+	public void init() {
+		participants = new ArrayList<String>();
+		
+		defineObsProperty("minOffer", 1980);
+		defineObsProperty("participants", 0);
+	}
 
- public void init()  {
-     // observable properties
-     defineObsProperty("running",     "no");
-     defineObsProperty("best_bid",    Double.MAX_VALUE);
-     defineObsProperty("winner",      new Atom(currentWinner)); // Atom is a Jason type
- }
+	@OPERATION
+	public void getIn() {
+		ObsProperty opParticipants  = getObsProperty("participants");
+		opParticipants.updateValue(opParticipants.intValue()+1);
+		participants.add(getCurrentOpAgentId().getAgentName());
+	}
 
- @OPERATION public void start(String task)  {
-     if (getObsProperty("running").stringValue().equals("yes"))
-         failed("The protocol is already running and so you cannot start it!");
+	@OPERATION
+	public void getOut() {
+		ObsProperty opParticipants  = getObsProperty("participants");
+		if (opParticipants.intValue() > 1) {
+			opParticipants.updateValue(opParticipants.intValue()-1);
+			System.out.println(getCurrentOpAgentId().getAgentName() + " is out!");
+			participants.remove(getCurrentOpAgentId().getAgentName());
+		}
+		if (opParticipants.intValue() == 1) {
+			System.out.println(participants.get(0) + " is the winner!");
+		}
+	}
 
-     defineObsProperty("task", task);
-     getObsProperty("running").updateValue("yes");
- }
-
- @OPERATION public void stop()  {
-     if (! getObsProperty("running").stringValue().equals("yes"))
-         failed("The protocol is not running, why to stop it?!");
-
-     getObsProperty("running").updateValue("no");
-     getObsProperty("winner").updateValue(new Atom(currentWinner));
- }
- 
-//mudar aqui para que 
- @OPERATION public void bid(double bidValue) {
-     if (getObsProperty("running").stringValue().equals("no"))
-         failed("You can not bid for this auction, it is not running!");
-     
-     
-     ObsProperty opCurrentValue  = getObsProperty("best_bid");
-     if (bidValue < opCurrentValue.doubleValue()) {  // the bid is better than the previous
-         opCurrentValue.updateValue(bidValue);
-         currentWinner = getCurrentOpAgentId().getAgentName(); // the name of the agent doing this operation
-     }
-     
-     
-// até aqui        
-     System.out.println("Received bid "+bidValue+" from "+getCurrentOpAgentId().getAgentName()+" for "+getObsProperty("task").stringValue());
- }
+	@OPERATION
+	public void setOffer(double minValue) {
+		ObsProperty opMinOffer  = getObsProperty("minOffer");
+		opMinOffer.updateValue(minValue);			
+		System.out.println("Minimum price set as " + minValue + " from " + getCurrentOpAgentId().getAgentName());
+	}
 }
