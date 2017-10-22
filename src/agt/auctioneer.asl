@@ -1,4 +1,4 @@
-price(2000).
+price(1980).
 total(6).
 winner(null).
 
@@ -7,14 +7,15 @@ winner(null).
 @b01 +present. //Failure plan
 
 @g00[atomic] +!setOffer : .count(present[source(B)],N) & N > 0 <-
-	?price(P);
-	.broadcast(tell, auction(diamond_ring, P));
-	.print("Who pay ", P, " for this 'diamond ring'?");
-	-+price(P*1.01);
 	if (N > 1) {
+		?price(P);
+		-+price(P+20);
+		.broadcast(tell, auction(diamond_ring, P+20));
+		.print("Who pay $", P+20, " for this 'diamond ring'?");
 		!!setOffer;
-	} else {
+	} else { //There is only one present
 		?present[source(S)];
+		-+winner(S);
 		.print(S," is the winner!");
 	}.
 

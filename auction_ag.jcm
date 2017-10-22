@@ -12,7 +12,5 @@ mas auction_ag {
      
     asl-path: src/agt
               src/agt/inc
-              
-    //platform: jade()
 }
 
