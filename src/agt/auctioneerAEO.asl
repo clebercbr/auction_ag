@@ -25,10 +25,10 @@
 @p10[atomic] +!setOffer[scheme(Sch)] <-    
 	?goalArgument(Sch,auction,"Id",Id);
 	lookupArtifact(Id,ArtId);
-	?Sch::participants(N);
+	?NS::participants(N);
 	if (N > 1) {
-		?Sch::minOffer(P);
-		Sch::setOffer(P+20);	
+		?NS::minOffer(P);
+		setOffer(P+20)[scheme(Sch)];	
 		!!setOffer[scheme(Sch)];
 	}.
 	
