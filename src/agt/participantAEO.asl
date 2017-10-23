@@ -1,7 +1,8 @@
 my_price(2000+math.random*200).
 
-+!focus(A) <- 
-	lookupArtifact(A,ToolId);
++!focus[scheme(Sch)] <- 
+	?goalArgument(Sch,auction,"Id",Id);
+	lookupArtifact(Id,ToolId);
     focus(ToolId);
     +present;
     getIn.

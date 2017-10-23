@@ -3,7 +3,7 @@ mas auctionAE {
 	agent marie_curie	: auctioneerAE.asl
     agent socrates      : participantAE.asl
     agent kant          : participantAE.asl
-    agent atistoteles   : participantAE.asl
+    agent aristoteles   : participantAE.asl
     agent platao        : participantAE.asl
     agent heraclito     : participantAE.asl
 	agent hannah_arendt : participantAE.asl

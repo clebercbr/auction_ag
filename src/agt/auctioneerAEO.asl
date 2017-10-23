@@ -1,5 +1,5 @@
 //!start.
-!do_action("a1", "product(diamond_ring)").
+!do_auction("a1", "product(diamond_ring)").
 
 +!do_auction(Id,P) <- // creates a scheme to coordinate the auction
 	.concat("sch_",Id,SchName);
@@ -7,29 +7,27 @@
     debug(inspector_gui(on))[artifact_id(SchArtId)];
     setArgumentValue(auction,"Id",Id)[artifact_id(SchArtId)];
     setArgumentValue(auction,"Service",P)[artifact_id(SchArtId)];
-    .my_name(Me); setOwner(Me)[artifact_id(SchArtId)];  // I am the owner of this scheme!
+    .my_name(Me); setOwner(Me)[artifact_id(SchArtId)];
     focus(SchArtId);
-    addScheme(SchName);  // set the group as responsible for the scheme
+    addScheme(SchName);
     commitMission(mAuctioneer)[artifact_id(SchArtId)].
 
 +!start[scheme(Sch)] <- 
 	?goalArgument(Sch,auction,"Id",Id);
     ?goalArgument(Sch,auction,"Service",S);
     .print("Start scheme ",Sch," for ",S);
-	makeArtifact(a1, "auction.AuctionArtifact", [], ArtId);
-    .print("Auction artifact created for ",product(diamond_ring));
-    focus(ArtId);
-    .broadcast(achieve,focus(a1));
-    .wait(500);
-    !setOffer.
+	makeArtifact(Id, "auction.AuctionArtifact", [], ArtId);
+    .print("Auction artifact created for id:",Id , " name:", S);
+    Sch::focus(ArtId).
     
-@p10[atomic] +!setOffer <-    
-	lookupArtifact(a1,ArtId);
-	?participants(N);
+@p10[atomic] +!setOffer[scheme(Sch)] <-    
+	?goalArgument(Sch,auction,"Id",Id);
+	lookupArtifact(Id,ArtId);
+	?Sch::participants(N);
 	if (N > 1) {
-		?minOffer(P);
-		setOffer(P+20);	
-		!!setOffer;
+		?Sch::minOffer(P);
+		Sch::setOffer(P+20);	
+		!!setOffer[scheme(Sch)];
 	}.
 	
 +!setOffer.

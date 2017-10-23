@@ -4,7 +4,7 @@ mas auctionAEO {
 	
     agent socrates      : participantAEO.asl
     agent kant          : participantAEO.asl
-    agent atistoteles   : participantAEO.asl
+    agent aristoteles   : participantAEO.asl
     agent platao        : participantAEO.asl
     agent heraclito     : participantAEO.asl
 	agent hannah_arendt : participantAEO.asl
@@ -14,7 +14,7 @@ mas auctionAEO {
             players: marie_curie	auctioneer
                      socrates		participant
                      kant			participant
-                     atistoteles	participant
+                     aristoteles	participant
                      platao			participant
                      heraclito		participant
                      hannah_arendt	participant
