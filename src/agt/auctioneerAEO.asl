@@ -17,19 +17,21 @@
     .print("Start scheme ",Sch," for ",S);
 	makeArtifact(Id, "auction.AuctionArtifact", [], ArtId);
     .print("Auction artifact created for id:",Id , " name:", S);
-    Sch::focus(ArtId).
+    Sch::focus(ArtId);
+    Sch::start(S);
+    !setOffer[scheme(Sch)].
     
 @p10[atomic] +!setOffer[scheme(Sch)] <-    
 	?goalArgument(Sch,auction,"Id",Id);
 	lookupArtifact(Id,ArtId);
-	?Sch::participants(N);
+	?NS::participants(N);
 	if (N > 1) {
-		?Sch::minOffer(P);
-		Sch::setOffer(P+20);	
+		?NS::minOffer(P);
+		setOffer(P+20)[scheme(Sch)];	
 		!!setOffer[scheme(Sch)];
 	}.
 	
-+!setOffer.
++!setOffer[scheme(Sch)].
 
 { include("$jacamoJar/templates/common-cartago.asl") }
 { include("$jacamoJar/templates/common-moise.asl") }
