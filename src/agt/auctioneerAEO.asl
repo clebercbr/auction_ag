@@ -1,4 +1,3 @@
-//!start.
 !do_auction("a1", "product(diamond_ring)").
 
 +!do_auction(Id,P) <- // creates a scheme to coordinate the auction
