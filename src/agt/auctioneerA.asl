@@ -1,5 +1,4 @@
 price(1980).
-total(6).
 winner(null).
 
 @b00 +present : .count(present[source(B)],N) & total(T) & N = T  <- !setOffer.
@@ -17,6 +16,7 @@ winner(null).
 		?present[source(S)];
 		-+winner(S);
 		.print(S," is the winner!");
+		.stopMAS;
 	}.
 
 @g01 +!setOffer. //Failure plan
@@ -24,8 +24,9 @@ winner(null).
 @p20[atomic] -present[source(A)] <-
 	.count(present[source(B)],N);
 	if (N = 0 & winner(null)) {
-		.print(A," was chosen as the winner!");
 		-+winner(A);	
+		.print(A," was chosen as the winner!");
+		.stopMAS;
 	} else {
 		.print(A," is out!");	
 	}.
