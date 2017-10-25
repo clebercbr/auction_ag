@@ -6,6 +6,6 @@
 	<classpathentry excluding="*.xml" kind="src" path="src/org"/>
 	<classpathentry kind="src" path="src/env"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JaCaMo"/>
-	<classpathentry kind="lib" path="/home/cleber/jacamo-0.7-SNAPSHOT/libs/jacamo-0.7-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="/home/cleber/jacamo-0.7/libs/jacamo-0.7-SNAPSHOT.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
