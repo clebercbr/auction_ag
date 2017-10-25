@@ -1,0 +1,7 @@
+*.mas2j~
+*.jar
+*.asl~
+src/asl/*.asl~
+src/agt/*.asl~
+bin/classes/*
+bin/*
