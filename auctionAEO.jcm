@@ -1,23 +1,32 @@
 mas auctionAEO {
 
-	agent marie_curie	: auctioneerAEO.asl
-	
-    agent socrates      : participantAEO.asl
-    agent kant          : participantAEO.asl
-    agent aristoteles   : participantAEO.asl
-    agent platao        : participantAEO.asl
-    agent heraclito     : participantAEO.asl
-	agent hannah_arendt : participantAEO.asl
+	agent a	: auctioneerAEO.asl {
+    	beliefs: 	total(10)
+	} 
+    agent p1 : participantAEO.asl
+    agent p2 : participantAEO.asl
+    agent p3 : participantAEO.asl
+    agent p4 : participantAEO.asl
+    agent p5 : participantAEO.asl
+    agent p6 : participantAEO.asl
+    agent p7 : participantAEO.asl
+    agent p8 : participantAEO.asl
+    agent p9 : participantAEO.asl
+    agent p10 : participantAEO.asl
  
     organisation aorg : auction-os.xml {
         group agrp : auctionGroup {
-            players: marie_curie	auctioneer
-                     socrates		participant
-                     kant			participant
-                     aristoteles	participant
-                     platao			participant
-                     heraclito		participant
-                     hannah_arendt	participant
+            players: a		auctioneer
+                     p1		participant
+                     p2		participant
+                     p3		participant
+                     p4		participant
+                     p5		participant
+                     p6		participant
+                     p7		participant
+                     p8		participant
+                     p9		participant
+                     p10	participant
             debug
         }
     }
