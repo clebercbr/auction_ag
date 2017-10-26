@@ -7,8 +7,13 @@ mas auctionAE {
     agent platao        : participantAE.asl
     agent heraclito     : participantAE.asl
 	agent hannah_arendt : participantAE.asl
- 
+	
+	workspace market_place {
+        artifact auction1 : auctionAE.AuctionArtifact() {
+            focused-by: marie_curie, socrates, kant, aristoteles, platao, heraclito, hannah_arendt
+        }
+    }
+    
     asl-path: src/agt
               src/agt/inc
 }
-
