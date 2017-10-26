@@ -1,4 +1,4 @@
-package auction;
+package auctionAE;
 
 import cartago.*;
 import java.util.ArrayList;

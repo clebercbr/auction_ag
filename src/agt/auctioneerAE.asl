@@ -6,8 +6,7 @@ product(diamond_ring).
 	makeArtifact(a1, "auctionAE.AuctionArtifact", [], ArtId);
     .print("Auction artifact created for ",product(diamond_ring));
     focus(ArtId);
-    .broadcast(achieve,focus(a1)).
-   
+    .broadcast(achieve,focus(a1)). 
 
 +lets[source(L)]: true <- !setOffer.
 
