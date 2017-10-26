@@ -4,8 +4,7 @@ my_price(2000+math.random*200).
 	lookupArtifact(A,ToolId);
     focus(ToolId);
     +present;
-    getIn;
-    .send(marie_curie, tell, lets).
+    getIn.
 
 +minOffer(N) : my_price(MP) & present <-
 	if (N > MP) {
@@ -15,7 +14,9 @@ my_price(2000+math.random*200).
 
 +minOffer(N).
 
-+winnerag[source(Z)]: true <- .print("I am so so Happy because I am the winner").
++winnerag[source(Z)]: true <- 
+	.print("I am so so Happy because I am the winner");
+	.stopMAS.
 
 { include("$jacamoJar/templates/common-cartago.asl") }
 { include("$jacamoJar/templates/common-moise.asl") }

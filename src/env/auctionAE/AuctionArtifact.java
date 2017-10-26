@@ -15,9 +15,7 @@ public class AuctionArtifact extends Artifact {
 		
 		defineObsProperty("minOffer", 1980);
 		defineObsProperty("participants", 0);
-		defineObsProperty("winner",      new Atom(currentWinner)); // Atom is a Jason type
-		
-       
+		defineObsProperty("winner", new Atom(currentWinner)); // Atom is a Jason type
 	}
 
 	@OPERATION
@@ -26,10 +24,7 @@ public class AuctionArtifact extends Artifact {
 		opParticipants.updateValue(opParticipants.intValue()+1);
 		participants.add(getCurrentOpAgentId().getAgentName());
 		System.out.println(getCurrentOpAgentId().getAgentName() + " is in!");
-	    
-	    
 	}
-	
 
 	@OPERATION
 	public void getOut() {
@@ -41,7 +36,6 @@ public class AuctionArtifact extends Artifact {
 		}
 		
 		if (opParticipants.intValue() == 1) {
-		//	System.out.println(participants.get(0) + " is the winner!");
 			 currentWinner = participants.get(0);
 			 getObsProperty("winner").updateValue(new Atom(currentWinner));
 		}

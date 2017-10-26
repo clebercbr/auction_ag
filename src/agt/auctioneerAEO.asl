@@ -31,6 +31,8 @@
 	
 +!setOffer[scheme(Sch)].
 
++participants(N): total(NT) & N == NT <- !setOffer.
+
 +participants(N) <-
 	if (N == 1) {
 		+winner;
@@ -39,7 +41,9 @@
 		+winner;
 	}.
 
-+winner <- .stopMAS.
++winner(W) : W \== no_winner
+   <- .print("Winner for ", product(diamond_ring), " is ", W);
+	  .send(W, tell, winnerag).
 
 { include("$jacamoJar/templates/common-cartago.asl") }
 { include("$jacamoJar/templates/common-moise.asl") }

@@ -1,15 +1,10 @@
-product(diamond_ring).
-
-!start.
-
 +!start <- 
-	makeArtifact(a1, "auctionAE.AuctionArtifact", [], ArtId);
+	lookupArtifact("auction1",ArtId);
     .print("Auction artifact created for ",product(diamond_ring));
     focus(ArtId);
     .broadcast(achieve,focus(a1)). 
 
-+lets[source(L)]: true <- !setOffer.
-
++participants(N): total(NT) & N == NT <- !setOffer.
     
 @p10[atomic] +!setOffer 
 	 <- lookupArtifact(a1,ArtId);
@@ -21,10 +16,8 @@ product(diamond_ring).
 	}.
 	
 +winner(W) : W \== no_winner
-   <- 
-      .print("Winner for ", product(diamond_ring), " is ", W);
+   <- .print("Winner for ", product(diamond_ring), " is ", W);
 	  .send(W, tell, winnerag).
-
 
 { include("$jacamoJar/templates/common-cartago.asl") }
 { include("$jacamoJar/templates/common-moise.asl") }
