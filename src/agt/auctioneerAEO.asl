@@ -1,5 +1,3 @@
-!do_auction("a1", "product(diamond_ring)").
-
 +!do_auction(Id,P) <- // creates a scheme to coordinate the auction
 	.concat("sch_",Id,SchName);
     makeArtifact(SchName, "ora4mas.nopl.SchemeBoard",["src/org/auction-os.xml", doAuction], SchArtId);
@@ -29,17 +27,9 @@
 		!!setOffer[scheme(Sch)];
 	}.
 	
-+!setOffer[scheme(Sch)].
++!setOffer.
 
 +participants(N): total(NT) & N == NT <- !setOffer.
-
-+participants(N) <-
-	if (N == 1) {
-		+winner;
-	}
-	if (N == 0) {
-		+winner;
-	}.
 
 +winner(W) : W \== no_winner
    <- .print("Winner for ", product(diamond_ring), " is ", W);

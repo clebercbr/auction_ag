@@ -2,12 +2,12 @@
 	lookupArtifact("auction1",ArtId);
     .print("Auction artifact created for ",product(diamond_ring));
     focus(ArtId);
-    .broadcast(achieve,focus(a1)). 
+    .broadcast(achieve,focus(auction1)). 
 
 +participants(N): total(NT) & N == NT <- !setOffer.
     
 @p10[atomic] +!setOffer 
-	 <- lookupArtifact(a1,ArtId);
+	 <- lookupArtifact(auction1,ArtId);
 	?participants(N);
 	if (N > 1) {
 		?minOffer(P);

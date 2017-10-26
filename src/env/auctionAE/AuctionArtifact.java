@@ -23,7 +23,6 @@ public class AuctionArtifact extends Artifact {
 		ObsProperty opParticipants  = getObsProperty("participants");
 		opParticipants.updateValue(opParticipants.intValue()+1);
 		participants.add(getCurrentOpAgentId().getAgentName());
-		System.out.println(getCurrentOpAgentId().getAgentName() + " is in!");
 	}
 
 	@OPERATION
@@ -31,7 +30,6 @@ public class AuctionArtifact extends Artifact {
 		ObsProperty opParticipants  = getObsProperty("participants");
 		if (opParticipants.intValue() > 1) {
 			opParticipants.updateValue(opParticipants.intValue()-1);
-			System.out.println(getCurrentOpAgentId().getAgentName() + " is out!");
 			participants.remove(getCurrentOpAgentId().getAgentName());
 		}
 		

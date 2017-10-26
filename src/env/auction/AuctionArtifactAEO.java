@@ -6,9 +6,11 @@ import java.util.List;
 //CArtAgO artifact code for project versao_ae
 
 import cartago.*;
+import jason.asSyntax.Atom;
 
 public class AuctionArtifactAEO extends Artifact {
 
+	String currentWinner = "no_winner";
 	private List<String> participants;
 	
 	public void init() {
@@ -16,6 +18,7 @@ public class AuctionArtifactAEO extends Artifact {
 		
 		defineObsProperty("minOffer", 1980);
 		defineObsProperty("participants", 0);
+		defineObsProperty("winner", new Atom(currentWinner)); // Atom is a Jason type
 	}
 
 	@OPERATION
@@ -34,7 +37,8 @@ public class AuctionArtifactAEO extends Artifact {
 			participants.remove(getCurrentOpAgentId().getAgentName());
 		}
 		if (opParticipants.intValue() == 1) {
-			System.out.println(participants.get(0) + " is the winner!");
+			 currentWinner = participants.get(0);
+			 getObsProperty("winner").updateValue(new Atom(currentWinner));
 		}
 	}
 

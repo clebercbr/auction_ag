@@ -3,6 +3,7 @@ mas auctionAEO {
 	agent a	: auctioneerAEO.asl {
     	beliefs: 	total(20)
     	roles:      auctioneer in agrp
+    	goals:		do_auction("a1", "product(diamond_ring)")
 	} 
     agent p : participantAEO.asl {
     	instances: 	20
