@@ -15,7 +15,6 @@ public class AuctionArtifact extends Artifact {
 		
 		defineObsProperty("minOffer", 1980);
 		defineObsProperty("participants", 0);
-		defineObsProperty("best_bid",    Double.MAX_VALUE);
 		defineObsProperty("winner",      new Atom(currentWinner)); // Atom is a Jason type
 		
        
