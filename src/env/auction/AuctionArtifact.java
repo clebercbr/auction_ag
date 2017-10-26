@@ -1,14 +1,13 @@
 package auction;
 
+import cartago.*;
 import java.util.ArrayList;
 import java.util.List;
-
-//CArtAgO artifact code for project versao_ae
-
-import cartago.*;
+import jason.asSyntax.Atom;
 
 public class AuctionArtifact extends Artifact {
 
+	String currentWinner = "no_winner";
 	private List<String> participants;
 	
 	public void init() {
@@ -16,6 +15,10 @@ public class AuctionArtifact extends Artifact {
 		
 		defineObsProperty("minOffer", 1980);
 		defineObsProperty("participants", 0);
+		defineObsProperty("best_bid",    Double.MAX_VALUE);
+		defineObsProperty("winner",      new Atom(currentWinner)); // Atom is a Jason type
+		
+       
 	}
 
 	@OPERATION
@@ -23,7 +26,11 @@ public class AuctionArtifact extends Artifact {
 		ObsProperty opParticipants  = getObsProperty("participants");
 		opParticipants.updateValue(opParticipants.intValue()+1);
 		participants.add(getCurrentOpAgentId().getAgentName());
+		System.out.println(getCurrentOpAgentId().getAgentName() + " is in!");
+	    
+	    
 	}
+	
 
 	@OPERATION
 	public void getOut() {
@@ -33,8 +40,11 @@ public class AuctionArtifact extends Artifact {
 			System.out.println(getCurrentOpAgentId().getAgentName() + " is out!");
 			participants.remove(getCurrentOpAgentId().getAgentName());
 		}
+		
 		if (opParticipants.intValue() == 1) {
-			System.out.println(participants.get(0) + " is the winner!");
+		//	System.out.println(participants.get(0) + " is the winner!");
+			 currentWinner = participants.get(0);
+			 getObsProperty("winner").updateValue(new Atom(currentWinner));
 		}
 	}
 
