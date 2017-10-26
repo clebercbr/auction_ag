@@ -3,7 +3,6 @@
 +!do_auction(Id,P) <- // creates a scheme to coordinate the auction
 	.concat("sch_",Id,SchName);
     makeArtifact(SchName, "ora4mas.nopl.SchemeBoard",["src/org/auction-os.xml", doAuction], SchArtId);
-    debug(inspector_gui(on))[artifact_id(SchArtId)];
     setArgumentValue(auction,"Id",Id)[artifact_id(SchArtId)];
     setArgumentValue(auction,"Service",P)[artifact_id(SchArtId)];
     .my_name(Me); setOwner(Me)[artifact_id(SchArtId)];
@@ -15,23 +14,32 @@
 	?goalArgument(Sch,auction,"Id",Id);
     ?goalArgument(Sch,auction,"Service",S);
     .print("Start scheme ",Sch," for ",S);
-	makeArtifact(Id, "auction.AuctionArtifact", [], ArtId);
+	makeArtifact(Id, "auction.AuctionArtifactAEO", [], ArtId);
     .print("Auction artifact created for id:",Id , " name:", S);
-    Sch::focus(ArtId);
-    Sch::start(S);
-    !setOffer[scheme(Sch)].
+    Sch::focus(ArtId).
     
 @p10[atomic] +!setOffer[scheme(Sch)] <-    
 	?goalArgument(Sch,auction,"Id",Id);
 	lookupArtifact(Id,ArtId);
-	?NS::participants(N);
+	focus(ArtId);
+	?Sch::participants(N);
 	if (N > 1) {
-		?NS::minOffer(P);
-		setOffer(P+20)[scheme(Sch)];	
+		?Sch::minOffer(P);
+		Sch::setOffer(P+20);	
 		!!setOffer[scheme(Sch)];
 	}.
 	
 +!setOffer[scheme(Sch)].
+
++participants(N) <-
+	if (N == 1) {
+		+winner;
+	}
+	if (N == 0) {
+		+winner;
+	}.
+
++winner <- .stopMAS.
 
 { include("$jacamoJar/templates/common-cartago.asl") }
 { include("$jacamoJar/templates/common-moise.asl") }

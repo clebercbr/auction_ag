@@ -1,34 +1,16 @@
 mas auctionAEO {
 
 	agent a	: auctioneerAEO.asl {
-    	beliefs: 	total(10)
+    	beliefs: 	total(20)
+    	roles:      auctioneer in agrp
 	} 
-    agent p1 : participantAEO.asl
-    agent p2 : participantAEO.asl
-    agent p3 : participantAEO.asl
-    agent p4 : participantAEO.asl
-    agent p5 : participantAEO.asl
-    agent p6 : participantAEO.asl
-    agent p7 : participantAEO.asl
-    agent p8 : participantAEO.asl
-    agent p9 : participantAEO.asl
-    agent p10 : participantAEO.asl
+    agent p : participantAEO.asl {
+    	instances: 	20
+    	roles:      participant in agrp
+    }
  
     organisation aorg : auction-os.xml {
-        group agrp : auctionGroup {
-            players: a		auctioneer
-                     p1		participant
-                     p2		participant
-                     p3		participant
-                     p4		participant
-                     p5		participant
-                     p6		participant
-                     p7		participant
-                     p8		participant
-                     p9		participant
-                     p10	participant
-            debug
-        }
+        group agrp : auctionGroup
     }
      
     asl-path: src/agt
