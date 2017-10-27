@@ -1,19 +1,19 @@
 mas auctionAEO {
 
 	agent a	: auctioneerAEO.asl {
-    	beliefs: 	total(20)
+    	beliefs: 	total(10)
     	roles:      auctioneer in agrp
-    	goals:		do_auction("a1", "product(diamond_ring)")
+		goals:		do_auction("auction1","product(diamond_ring)")
 	} 
     agent p : participantAEO.asl {
-    	instances: 	20
+    	instances: 	10
     	roles:      participant in agrp
     }
- 
+     
     organisation aorg : auction-os.xml {
         group agrp : auctionGroup
     }
-     
+
     asl-path: src/agt
               src/agt/inc
 }

@@ -1,11 +1,8 @@
 package auction;
 
+import cartago.*;
 import java.util.ArrayList;
 import java.util.List;
-
-//CArtAgO artifact code for project versao_ae
-
-import cartago.*;
 import jason.asSyntax.Atom;
 
 public class AuctionArtifactAEO extends Artifact {
@@ -33,9 +30,9 @@ public class AuctionArtifactAEO extends Artifact {
 		ObsProperty opParticipants  = getObsProperty("participants");
 		if (opParticipants.intValue() > 1) {
 			opParticipants.updateValue(opParticipants.intValue()-1);
-			System.out.println(getCurrentOpAgentId().getAgentName() + " is out!");
 			participants.remove(getCurrentOpAgentId().getAgentName());
 		}
+		
 		if (opParticipants.intValue() == 1) {
 			 currentWinner = participants.get(0);
 			 getObsProperty("winner").updateValue(new Atom(currentWinner));
