@@ -43,6 +43,6 @@ public class AuctionArtifact extends Artifact {
 	public void setOffer(double minValue) {
 		ObsProperty opMinOffer  = getObsProperty("minOffer");
 		opMinOffer.updateValue(minValue);			
-		System.out.println("Minimum price set as " + minValue + " from " + getCurrentOpAgentId().getAgentName());
+		//System.out.println("Minimum price set as " + minValue + " from " + getCurrentOpAgentId().getAgentName());
 	}
 }
