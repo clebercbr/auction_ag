@@ -1,7 +1,7 @@
 +!start[scheme(Sch)] <- 
 	?goalArgument(Sch,auction,"Id",Id);
 	makeArtifact(Id, "auction.AuctionArtifactAEO", [], ArtId);
-	SchName::focus(ArtId).
+	focus(ArtId).
 
 +!do_auction(Id,P) <- // creates a scheme to coordinate the auction
 	.concat("sch_",Id,SchName);
@@ -13,6 +13,8 @@
     addScheme(SchName);
     commitMission(mAuctioneer)[artifact_id(SchArtId)].    
 
++participants(N): total(NT) & N == NT <- !setOffer.
+
 @p10[atomic] +!setOffer <-    
 	?goalArgument(Sch,auction,"Id",Id);
 	lookupArtifact(Id,ArtId);
@@ -23,8 +25,6 @@
 		setOffer(P+20);	
 		!setOffer[scheme(Sch)];
 	}.
-
-+participants(N): total(NT) & N == NT <- !setOffer.
 
 +winner(W) : W \== no_winner
    <- .print("Winner for ", product(diamond_ring), " is ", W);
