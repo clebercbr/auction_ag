@@ -10,7 +10,7 @@ winner(no_winner).
 		?price(P);
 		-+price(P+20);
 		.broadcast(tell, auction(diamond_ring, P+20));
-		.print("Who pay $", P+20, " for this 'diamond ring'?");
+		//.print("Who pay $", P+20, " for this 'diamond ring'?");
 		!!setOffer;
 	} else { //There is only one present
 		?present[source(S)];

@@ -1,10 +1,10 @@
 mas auctionA {
 
 	agent a	: auctioneerA.asl {
-    	beliefs: 	total(50)
+    	beliefs: 	total(120)
 	} 
     agent p : participantA.asl {
-		instances: 50
+		instances: 120
 	}
      
     asl-path: src/agt
