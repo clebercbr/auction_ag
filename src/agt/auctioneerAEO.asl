@@ -13,7 +13,7 @@
     addScheme(SchName);
     commitMission(mAuctioneer)[artifact_id(SchArtId)].    
 
-@p10[atomic] +!setOffer[scheme(Sch)] <-    
+@p10[atomic] +!setOffer <-    
 	?goalArgument(Sch,auction,"Id",Id);
 	lookupArtifact(Id,ArtId);
 	focus(ArtId);
@@ -21,10 +21,8 @@
 	if (N > 1) {
 		?minOffer(P);
 		setOffer(P+20);	
-		!!setOffer[scheme(Sch)];
+		!setOffer[scheme(Sch)];
 	}.
-	
-+!setOffer.
 
 +participants(N): total(NT) & N == NT <- !setOffer.
 
