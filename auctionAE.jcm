@@ -1,14 +1,14 @@
 mas auctionAE {
 
 	agent a	: auctioneerAE.asl {
-    	beliefs: 	total(1000)
+    	beliefs: 	total(10)
     				product(diamond_ring)
     	goals:		start
 		focus:		auction1
 	}
 	 
     agent p : participantAE.asl {
-		instances:  1000
+		instances:  10
 		focus:		auction1
 	}
      

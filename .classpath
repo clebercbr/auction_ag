@@ -5,9 +5,6 @@
 	<classpathentry excluding="*.ptl" kind="src" path="src/int"/>
 	<classpathentry excluding="*.xml" kind="src" path="src/org"/>
 	<classpathentry kind="src" path="src/env"/>
-	<classpathentry kind="lib" path="/home/cleber/jacamo-0.7/libs/jacamo-0.7-SNAPSHOT.jar"/>
-	<classpathentry kind="lib" path="/home/cleber/jacamo-0.7/libs/cartago-2.3-SNAPSHOT.jar"/>
-	<classpathentry kind="lib" path="/home/cleber/jacamo-0.7/libs/jade-4.5.0.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JaCaMo"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
